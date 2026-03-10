@@ -362,7 +362,7 @@ Mechanisms:
 Maybe we can use a data structure like trie to store keys in the lexographical order, because we 'll need that for ordered index or maybe a secondary map for (prefix, key) service.
  
 **Q. What changes when you need strong consistency?**
- Strong consistency means you can’t rely on async replication/LWW; you need **leader or quorum writes/reads** (e.g., N replicas with **R+W>N**, or a single leader with sync replication) and accept higher latency and reduced availability during partitions.
+Strong consistency means you can’t rely on async replication/LWW; you need **leader or quorum writes/reads** (e.g., N replicas with **R+W>N**, or a single leader with sync replication) and accept higher latency and reduced availability during partitions.
  
 ## Phase 3 Drill (20 minutes)
 

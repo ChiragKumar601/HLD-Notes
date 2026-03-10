@@ -127,7 +127,7 @@ Common gateway responsibilities:
 - **Rate limiting / quotas** (global or per-tenant)
 - **Request routing** (host/path → service)
 - **Request normalization** (headers, compression). the gateway/edge makes incoming requests **consistent and safe** before they reach services, so every service doesn’t handle quirks or attacks differently.
-- **Observability** creates (requestId/trace propagation).So you can trace one request across microservices.
+- **Observability** creates (requestId/trace propagation). So you can trace one request across microservices.
 - **WAF(Web Application Firewall) / DDoS basics** (often via managed edge services)
 
 ### Architecture
@@ -226,6 +226,26 @@ A contract means:
 	    (`Idempotency-Key` header + dedupe behavior)
 
 	**Benefit:** every service behaves predictably; clients handle responses uniformly.
+
+
+- **RPC** stands for **Remote Procedure Call**.
+
+	It means: **your code calls a function that runs on another machine/service**, as if it were a local function call.
+
+	Example (mental model)
+	Local call:
+	- `getOrder(orderId)`
+	
+	RPC call:
+	- your service calls `OrderService.GetOrder(orderId)`	    
+	- but the function actually runs inside the **Order Service** over the network
+	- it returns the result back to you
+
+	 Why it’s used
+	- Makes service-to-service communication feel like calling methods/functions
+	- gRPC is a popular modern RPC framework
+		
+**One-liner:** RPC = “call a function on a remote service over the network.”
 
 
 ### Practical example (2 endpoints)
