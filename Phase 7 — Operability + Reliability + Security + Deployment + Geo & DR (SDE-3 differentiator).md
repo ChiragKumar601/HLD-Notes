@@ -271,7 +271,7 @@ So you want **controlled degradation**: reject/slow down work in a predictable w
 
 - **Rate limiting**: At gateway, cap requests per user/tenant/IP, enforces fairness and stops one noisy client from consuming all capacity.
 
-- **Priority queues**: process critical endpoints/premium users first and shed or delay low-priority traffic during overload.
+- **Priority queues**: process critical endpoints/premiu  m users first and shed or delay low-priority traffic during overload.
 
 - **Autoscaling**: Autoscaling just means: **add more workers/servers when load increases, remove them when load drops**. It works great only when the thing you’re scaling is the **bottleneck**.
 
@@ -406,7 +406,9 @@ Add a new column:
 **Q. How do you do zero-downtime DB migration?**
 We use the **expand/contract** pattern: add the new schema in a backward-compatible way, deploy code that can handle both (often **dual-write**), **backfill** existing data, **switch reads** to the new schema, and only after all old versions are gone do we **drop** the old schema.
 
+
 **Q. What metrics decide canary success?**
+Error, Latency and KPI are the main metrics which decides canary success. We route a small % of traffic to the newer version and expand gradually and if metrics regresses we do the rollback to the older version.
  
 
 

@@ -301,7 +301,6 @@ Per-tenant API limit: 100 rps burst 200.
 - **Payments:** **fail-closed** (protect correctness/cost and prevent abuse).
 
 **Q. How do you avoid the rate limiter becoming a bottleneck?**
- 
 
 
 # 6.4 Exactly-once effects: Idempotency + Dedup + Outbox
